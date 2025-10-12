@@ -74,12 +74,14 @@
     \hrule height .25pt\relax
     \nopagebreak[4]
 }
+\usepackage{ragged2e}
 
 \newenvironment{Ingred}[1][\unskip]{%
     \begin{minipage}{\textwidth}
         \textbf{\textit{Składniki #1:}}
         \vspace{-1em}
         \begin{multicols}{2}
+            \RaggedRight
             \small
             \begin{itemize}
                 }{%
