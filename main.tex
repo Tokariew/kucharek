@@ -1,0 +1,107 @@
+\documentclass[14pt,twoside,parskip=half*]{scrbook}
+
+\usepackage[polish]{babel}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\setsansfont{TeX Gyre Heros}
+\usepackage{microtype}
+
+\usepackage{xfrac}
+\usepackage{nicefrac}
+\usepackage{siunitx}
+\sisetup{
+    range-phrase=--,
+    range-units=single,
+    output-decimal-marker={,},
+    % parse-numbers=false,
+}
+
+\usepackage[a4paper, nomarginpar, margin=25mm, bindingoffset=10mm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{subfiles}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\setlist{nosep}
+
+\usepackage[
+    pdfpagelayout=TwoPageRight,
+    bookmarks=true,
+    pdfusetitle,
+    hidelinks,
+    unicode
+]{hyperref}
+
+\title{Książka Kucharska}
+\author{Acilia Tokariew}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{2}
+
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ohead{\textbf{\thepage}}
+\ihead{\textbf{\leftmark}}
+
+\newcommand{\rechead}{\centering\normalfont\Large\sffamily\bfseries}
+\RedeclareSectionCommand[
+    beforeskip=-5ex plus -1ex minus .2ex,
+    afterskip=1ex plus .2ex,
+    font=\rechead
+]{subsection}
+
+\usepackage{needspace}
+\preto\subsection{\Needspace{8\baselineskip}}
+
+\newcommand*{\rom}[1]{\MakeUppercase{\romannumeral #1}}
+\newcommand{\paru}[1]{\textbf{#1: }}
+
+\usepackage{needspace}
+\newcommand{\RecipeNeed}{10\baselineskip}
+
+\newcommand{\recipe}[1]{%
+    \par\Needspace{\RecipeNeed}
+    \subsection{#1}%
+    \hrule height .75pt\relax\vspace{1pt}%
+    \hrule height .25pt\relax
+    \nopagebreak[4]
+}
+
+\newenvironment{Ingred}[1][\unskip]{%
+    \begin{minipage}{\textwidth}
+        \textbf{\textit{Składniki #1:}}
+        \vspace{-1em}
+        \begin{multicols}{2}
+            \small
+            \begin{itemize}
+                }{%
+            \end{itemize}
+        \end{multicols}
+        \vspace{-0.5em}
+        \hrule height .25pt\relax
+    \end{minipage}
+}
+
+\begin{document}
+\frontmatter{}
+\maketitle{}
+\tableofcontents{}
+\chapter{Preface}
+Książka zawiera zbiór przepisów, które poniewierały się po różnych samotnych
+kartkach.
+
+\mainmatter{}
+
+\chapter{Przetwory}
+\subfile{przetwory.tex}
+\label{ch:przetwory}
+
+\end{document}
