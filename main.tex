@@ -48,8 +48,9 @@
 
 \usepackage[automark,headsepline]{scrlayer-scrpage}
 \clearpairofpagestyles
+\renewcommand*{\chaptermarkformat}{}
 \ohead{\textbf{\thepage}}
-\ihead{\textbf{\leftmark}}
+\ihead{\ifthispageodd{}{ \textbf{\leftmark} }}
 
 \newcommand{\rechead}{\centering\normalfont\Large\sffamily\bfseries}
 \RedeclareSectionCommand[
