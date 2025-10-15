@@ -29,5 +29,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: book-${{ github.sha }}
-          path: kucharek.pdf
+          path: main.pdf
           if-no-files-found: error
