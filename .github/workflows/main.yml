@@ -22,12 +22,12 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: |
-            main.tex
+            kucharek.tex
           latexmk_use_lualatex: true
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: book-${{ github.sha }}
-          path: main.pdf
+          path: kucharek.pdf
           if-no-files-found: error
